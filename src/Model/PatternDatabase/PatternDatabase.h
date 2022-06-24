@@ -21,6 +21,7 @@ using std::array;
 
 namespace busybin
 {
+
   /**
    * Base class for the corner and edge pattern databases.  Provides
    * index-based lookups for the number of moves required to get a scrambled

@@ -2,6 +2,8 @@
 
 namespace busybin
 {
+
+  long long int traversedStatesAtDepth = 0;
   /**
    * Initialize the searcher with a PatternDatabase instance.
    * @param pPatternDatabase A pointer to a PatternDatabase that will be used
@@ -47,9 +49,12 @@ namespace busybin
         if (bound != 0)
         {
           cout << "IDA*: Finished bound " << (unsigned)bound
-               << ".  Elapsed time: " << timer.getElapsedSeconds() << "s."
+               << ".  Elapsed time: " << timer.getElapsedSeconds() << "s. " <<
+               "traversed staes at this bound: " << traversedStatesAtDepth
                << endl;
         }
+
+        traversedStatesAtDepth = 0;
 
         // Start with the scrambled (root) node.  Depth 0, no move required.
         nodeStack.push({iCube, (MOVE)0xFF, 0});
@@ -70,6 +75,7 @@ namespace busybin
 
       curNode = nodeStack.top();
       nodeStack.pop();
+      ++traversedStatesAtDepth;
 
       // Keep the list of moves.  The moves end at 0xFF.
       moves.at(curNode.depth) = (MOVE)0xFF;
@@ -129,7 +135,8 @@ namespace busybin
       }
     }
 
-    cout << "IDA*: Goal reached in " << timer.getElapsedSeconds() << "s."
+    cout << "IDA*: Goal reached in " << timer.getElapsedSeconds() << "s. "
+         << "traversed staes at this bound: " << traversedStatesAtDepth
          << endl;
 
     // Convert the move to a vector.

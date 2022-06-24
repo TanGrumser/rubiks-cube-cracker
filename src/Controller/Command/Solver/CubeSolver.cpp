@@ -26,7 +26,7 @@ namespace busybin
    */
   void CubeSolver::initialize(std::function<void()> onInitialized)
   {
-    
+    setSolving(true);
   }
 
  

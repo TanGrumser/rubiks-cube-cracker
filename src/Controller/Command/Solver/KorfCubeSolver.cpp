@@ -163,7 +163,7 @@ namespace busybin
       // operations are required when indexing).
       this->korfDB.inflate();
 
-      this->setSolving(false);
+      //this->setSolving(false);
 
       cout << "Korf initialization complete." << endl;
       onInitialized();

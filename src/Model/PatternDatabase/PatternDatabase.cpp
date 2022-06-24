@@ -139,7 +139,6 @@ namespace busybin
    */
   bool PatternDatabase::fromFile(const string& filePath)
   {
-    std::cout << std::filesystem::current_path() << std::endl;
     ifstream reader(filePath, std::ios::in | std::ios::ate);
 
     if (!reader.is_open())
